@@ -97,8 +97,8 @@ module.exports = {
   plugins: [
     'hyperpower',
     'hyperlinks',
-    'hyperterm-gooey',
-    'hyper-blink',
+	'hyper-blink',
+    'hyper-snazzy',
     'hyperlayout',
     'hyperterm-overlay',
     'hyper-tab-icons'
