@@ -211,7 +211,7 @@ let g:user_emmet_leader_key="<C-E>"
 " Load custom Emmet snippets
 " http://docs.emmet.io/customization/snippets/
 
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand("~/.vim/snippets/emmet.json")), "\n"))
+" let g:user_emmet_settings = webapi#json#decode(join(readfile(expand("~/.vim/snippets/emmet.json")), "\n"))
 
 
 " ----------------------------------------------------------------------
