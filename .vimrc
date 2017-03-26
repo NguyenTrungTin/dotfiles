@@ -128,7 +128,7 @@ set winminheight=0             " Allow windows to be squashed
 filetype off
 
 " Set the runtime path to include Vundle
-set runtimepath+=~/.vim/plugins/Vundle.vim
+set runtimepath+=~/.vim/bundle/Vundle.vim
 
 " Initialize Vundle and specify the path
 " where the plugins should be installed

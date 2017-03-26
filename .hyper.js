@@ -97,14 +97,14 @@ module.exports = {
   plugins: [
     'hyperpower',
     'hyperlinks',
-	'hyper-blink',
+    'hyper-blink',
     'hyper-snazzy',
     'hyperlayout',
     'hyperterm-overlay',
     'hyper-tab-icons'
   ],
 	// Overlay
-	overlay: {
+  overlay: {
       alwaysOnTop: true,
       animate: true,
       hasShadow: false,
