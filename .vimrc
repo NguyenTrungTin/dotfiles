@@ -168,7 +168,6 @@ call vundle#begin("~/.vim/plugins")
 	Plugin 'leafgarland/typescript-vim'
 	Plugin 'Shougo/vimproc.vim'
 	Plugin 'Quramy/tsuquyomi'
-	Plugin 'Valloric/YouCompleteMe'
 	Plugin 'ryanoasis/vim-devicons'
 	Plugin 'kristijanhusak/vim-hybrid-material'
 	Plugin 'terryma/vim-multiple-cursors'
