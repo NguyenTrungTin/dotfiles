@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/tin/.oh-my-zsh
+export ZSH=/home/tin/.oh-my-zsh
 
 # Pure Theme
 fpath=( "$HOME/.zfunctions" $fpath )
@@ -8,7 +8,7 @@ fpath=( "$HOME/.zfunctions" $fpath )
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pure"
+ZSH_THEME="refined"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -52,11 +52,11 @@ ZSH_THEME="pure"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
-  export PATH="/home/tin/.local/share/umake/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+export PATH="/home/tin/.local/share/umake/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -65,11 +65,14 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+else
+    export EDITOR='mvim'
+fi
+
+# Set Vim mode for terminal
+set -o vi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -92,3 +95,19 @@ eval "$(thefuck --alias fuck)"
 
 # Yarn
 export PATH="$PATH:`yarn global bin`"
+
+# Go Lang
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/tin/go/bin:$PATH
+
+# Rust Cargo
+export PATH=$PATH:$HOME/.cargo/bin
+
+# Google Chrome
+alias chrome='/opt/google/chrome/chrome'
+
+# Emacs
+alias emacs='emacs --no-window-system'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

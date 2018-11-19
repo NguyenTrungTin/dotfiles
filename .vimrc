@@ -120,69 +120,99 @@ set winminheight=0             " Allow windows to be squashed
 " | Plugins                                                            |
 " ----------------------------------------------------------------------
 
-" Use Vundle to manage the vim plugins
-" https://github.com/gmarik/Vundle.vim
+" Use vim-plug to manage the vim plugins
+" https://github.com/junegunn/vim-plug
 
-" Disable file type detection
-" (required by Vundle)
-filetype off
+    call plug#begin('~/.vim/plugged')     " Specify a directory for plugins
 
-" Set the runtime path to include Vundle
-set runtimepath+=~/.vim/bundle/Vundle.vim
+    " Utility
+    Plug 'scrooloose/nerdtree'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+    Plug 'chrisbra/unicode.vim'
+    Plug 'godlygeek/tabular'
+    Plug 'tpope/vim-surround'
+	Plug 'terryma/vim-multiple-cursors'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-sensible'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'tomtom/tcomment_vim'
+    Plug 'tpope/vim-commentary'
+    Plug 'junegunn/goyo.vim'
+    Plug 'amix/vim-zenroom2'
+    Plug 'xolox/vim-easytags'
+    Plug 'xolox/vim-misc'
+    Plug 'majutsushi/tagbar'
+    Plug '~/.fzf'
 
-" Initialize Vundle and specify the path
-" where the plugins should be installed
-call vundle#begin("~/.vim/plugins")
+    " Generic Language Support
+    Plug 'w0rp/ale'
+    Plug 'scrooloose/syntastic'
+    Plug 'editorconfig/editorconfig-vim'
+    Plug 'mattn/webapi-vim'
+    Plug 'mattn/emmet-vim'
+    Plug 'raimondi/delimitmate'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'shougo/neosnippet'
+    Plug 'shougo/neocomplcache.vim'
+    Plug 'shougo/neosnippet-snippets'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-    " Let Vundle manage Vundle (this is important!)
-    Plugin 'VundleVim/Vundle.vim'
+    " HTML/CSS
+    Plug 'ap/vim-css-color'
+    Plug 'othree/html5.vim'
+	Plug 'wavded/vim-stylus'
+    Plug 'tpope/vim-haml'
 
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'ap/vim-css-color'
-    Plugin 'chrisbra/unicode.vim'
-    Plugin 'editorconfig/editorconfig-vim'
-    Plugin 'godlygeek/tabular'
-    Plugin 'jelera/vim-javascript-syntax'
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'marijnh/tern_for_vim'
-    Plugin 'mattn/emmet-vim'
-    Plugin 'mattn/webapi-vim'
-    Plugin 'nathanaelkane/vim-indent-guides'
-    Plugin 'othree/html5.vim'
-    Plugin 'plasticboy/vim-markdown'
-    Plugin 'raimondi/delimitmate'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'shougo/neocomplcache.vim'
-    Plugin 'shougo/neosnippet'
-    Plugin 'shougo/neosnippet-snippets'
-    Plugin 'shutnik/jshint2.vim'
-    Plugin 'tomtom/tcomment_vim'
-    Plugin 'tpope/vim-commentary'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'tpope/vim-repeat'
-    Plugin 'tpope/vim-surround'
-    Plugin 'mhartington/vim-angular2-snippets'
-    Plugin 'vim-airline/vim-airline'
-	Plugin 'vim-airline/vim-airline-themes'
-	Plugin 'leafgarland/typescript-vim'
-	Plugin 'Shougo/vimproc.vim'
-	Plugin 'Quramy/tsuquyomi'
-	Plugin 'ryanoasis/vim-devicons'
-	Plugin 'kristijanhusak/vim-hybrid-material'
-	Plugin 'terryma/vim-multiple-cursors'
-    Plugin 'mxw/vim-jsx'
-    Plugin 'jdkanani/vim-material-theme'
-    Plugin 'whatyouhide/vim-gotham'
-    Plugin 'joshdick/onedark.vim'
-	Plugin 'wavded/vim-stylus'
+    " Javascript
+    Plug 'jelera/vim-javascript-syntax'
+    Plug 'marijnh/tern_for_vim', { 'do': 'yarn install'}
+    Plug 'shutnik/jshint2.vim'
 
-	" Dracular Theme
-	Plugin 'dracula/vim'
+    " Typescript
+	Plug 'leafgarland/typescript-vim'
+	Plug 'Quramy/tsuquyomi'
 
-call vundle#end()
+    " JSON
+    Plug 'elzr/vim-json'
 
-filetype on
+    " Markdown
+    Plug 'plasticboy/vim-markdown'
+
+    " React
+    Plug 'mxw/vim-jsx'
+
+    " Vue
+    Plug 'posva/vim-vue'
+
+    " Angular
+    Plug 'mhartington/vim-angular2-snippets'
+
+    " Go Lang
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+    " Python
+
+    " Ruby
+    Plug 'vim-ruby/vim-ruby'
+    Plug 'tpope/vim-rails'
+
+    " Themes
+	Plug 'ryanoasis/vim-devicons'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'joshdick/onedark.vim'
+	Plug 'dracula/vim'
+    Plug 'morhetz/gruvbox'
+    Plug 'mhartington/oceanic-next'
+    Plug 'jdkanani/vim-material-theme'
+	Plug 'kristijanhusak/vim-hybrid-material'
+    Plug 'whatyouhide/vim-gotham'
+
+    " Initialize plugin system
+    call plug#end()
 
 " ----------------------------------------------------------------------
 " | Plugins - Vim-Airline                                              |
@@ -273,6 +303,42 @@ let g:syntastic_mode_map = {
     \ "mode": "passive",
     \ "passive_filetypes": []
 \}
+
+
+" ----------------------------------------------------------------------
+" | Plugins - Tagbar
+" ----------------------------------------------------------------------
+
+" Setting for Go Lang
+" https://github.com/jstemmer/gotags#vim-tagbar-configuration
+
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
 
 " ----------------------------------------------------------------------
 " | Helper Functions                                                   |
@@ -433,7 +499,7 @@ endif
 " Set font for Gui
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=SourceCodePro\ 12
+    set guifont=Source\ Code\ Pro\ for\ Powerline 11
   elseif has("gui_macvim")
     set guifont=Menlo\ Regular:h14
   elseif has("gui_win32")
@@ -441,7 +507,7 @@ if has("gui_running")
   endif
 endif
 
-colorscheme onedark          " Use custom color scheme
+colorscheme gruvbox          " Use custom color scheme
 
 " ----------------------------------------------------------------------
 " | Cursor                                                             |
@@ -541,6 +607,25 @@ nmap <leader>v :vsp $MYVIMRC<CR>
 " [,W ] Sudo write
 map <leader>W :w !sudo tee %<CR>
 
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" Zen distraction mode
+nnoremap <silent> <leader>z :Goyo<cr>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" Toggle Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" Automatic run Ctag
+nnoremap <f5> :!ctags -R<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" Edit file in current path
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " ----------------------------------------------------------------------
 " | Status Line                                                        |

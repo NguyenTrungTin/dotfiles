@@ -4,7 +4,7 @@ module.exports = {
     fontSize: 16,
 
     // font family with optional fallbacks
-    fontFamily: 'Source Code Pro, "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace',
+    fontFamily: '"Source Code Pro for Powerline", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.8)',
@@ -98,28 +98,12 @@ module.exports = {
     'hyperpower',
     'hyperlinks',
     'hyper-blink',
-    'hyper-snazzy',
+    'hyper-popping-and-locking',
+    'hyper-mac-controls',
     'hyperlayout',
-    'hyperterm-overlay',
     'hyper-tab-icons'
   ],
-	// Overlay
-  overlay: {
-      alwaysOnTop: true,
-      animate: true,
-      hasShadow: false,
-      hideDock: false,
-      hideOnBlur: true,
-      hotkeys: ['Ctrl+Super+Space'],
-      position: 'top',
-      primaryDisplay: false,
-      resizable: true,
-      startAlone: false,
-      startup: false,
-      size: 0.4,
-      tray: true,
-      unique: false
-    },
+
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
