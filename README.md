@@ -21,36 +21,52 @@ It's not mandatory but it's better if you install all util tools on your machine
 - [ack](https://beyondgrep.com/) - a tool like grep, optimized for programmers
 - [rg](https://github.com/BurntSushi/ripgrep) - ripgrep - recursively searches directories for a regex pattern
 - [fzf](https://github.com/junegunn/fzf) - A command-line fuzzy finder
+- [Tmuxinator](https://github.com/tmuxinator/tmuxinator)- Manage complex tmux sessions easily
 
 ### Installing
 
-To install dotfiles, you can you the install script using cURL:
+To install dotfiles, you can use the install script using cURL:
 
 ```sh
-curl -o- | bash
+curl -o- https://raw.githubusercontent.com/NguyenTrungTin/dotfiles/master/install.sh | bash
 ```
 
 Or Wget:
 
 ```sh
-wget -qO- | bash
+wget -qO- https://raw.githubusercontent.com/NguyenTrungTin/dotfiles/master/install.sh | bash
+```
+
+##### Uninstall/Revert
+
+To uninstall/revert to your previous dotfiles, you can use the uninstall script using cURL/Wget. For Example:
+
+```sh
+curl -o- curl -o- https://raw.githubusercontent.com/NguyenTrungTin/dotfiles/master/uninstall.sh | bash
 ```
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/NguyenTrungTin/dotfiles/tags). 
-
 ## Authors
 
-* **Tin Nguyen** - [PurpleBooth](https://github.com/NguyenTrungTin)
+* **Tin Nguyen** - [NguyenTrungTin](https://github.com/NguyenTrungTin)
 
 ## Credits
 
+** This project is heavily inspired by awesome opensourcer and books: **
+
+> Awesome dotfiles: 
+- [Mathias Bynens's dotfiles](https://github.com/mathiasbynens/dotfiles)
+- [alrra's dotfiles](https://github.com/mathiasbynens/dotfiles)
+- [gpakosz's tmux config](https://github.com/gpakosz/.tmux)
+
+> Awesome Books: 
+- [Practical Vim: Edit Text at the Speed of Thought](https://pragprog.com/book/dnvim2/practical-vim-second-edition)
+- [Tmux 2: Productive Mouse-Free Development](https://pragprog.com/book/bhtmux2/tmux-2)
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the [MIT](LICENSE.md) License.
 
