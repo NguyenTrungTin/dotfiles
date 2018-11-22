@@ -5,14 +5,17 @@ cd ~
 
 # Dotfiles
  DOTFILES='.aliases .bashrc .ctags .curlrc .editorconfig .gitconfig .gitignore .hyper.js .inputrc .tmux.conf .tmux.conf.local .vimrc .wgetrc .zshrc'
+DOTDIR='.vim/ .tmux/ .hyper_plugins/ .oh-my-zsh/'
 
 # Uninstall dotfiles
 echo 'Uninstalling dotfiles...'
-rm -f $DOTFILES
+rm -rf $DOTFILES $DOTDIR 2>/dev/null
 
 # Revert old dotfiles
 echo 'Reverting old dotfiles...'
-mv ~/.dotfiles-backup/.* ~/
+cd ~/.dotfiles-backup
+mv $DOTFILES $DOTDIR ~/ 2>/dev/null
+cd ~
 
 # Done!
 echo 'Done!'
