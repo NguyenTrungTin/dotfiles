@@ -38,7 +38,7 @@ mkdir -p ~/.vim/snippets
 mv ~/.dotfiles/.vim/snippets/* ~/.vim/snippets/
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PlugInstall +qall
+vim -c 'PlugInstall' -c 'qa!'
 
 # Setup for Tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
