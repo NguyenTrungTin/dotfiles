@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/tin/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Pure Theme
 fpath=( "$HOME/.zfunctions" $fpath )
@@ -56,7 +56,7 @@ plugins=(git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/home/tin/.local/share/umake/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.local/bin"
+export PATH="$HOME/.local/share/umake/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -94,7 +94,7 @@ export PATH="$PATH:`yarn global bin`"
 
 # Go Lang
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/tin/go/bin:$PATH
+export PATH=$PATH:$HOME/go/bin:$PATH
 
 # Rust Cargo
 export PATH=$PATH:$HOME/.cargo/bin
