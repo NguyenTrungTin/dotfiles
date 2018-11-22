@@ -11,9 +11,7 @@ rm -rf /.dotfiles
 
 # Revert old dotfiles
 echo 'Reverting old dotfiles...'
-cd /.dotfiles-backup
-mv -t ~/ *
-cd ~
+mv ~/.dotfiles-backup/.* ~/
 
 # Done!
 echo 'Done!'

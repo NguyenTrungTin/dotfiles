@@ -9,7 +9,7 @@ mkdir -p ~/.dotfiles-backup
 
 # Backup current dotfiles
 echo 'Moving current dotfiles into ~/.dotfiles-backup directory...'
-mv -t ~/.dotfiles-backup/ .aliases .bashrc .ctags .curlrc .editorconfig .gitconfig .gitignore .hyper.js .inputrc .tmux.conf .tmux.conf.local .vimrc .wgetrc .zshrc
+mv .aliases .bashrc .ctags .curlrc .editorconfig .gitconfig .gitignore .hyper.js .inputrc .tmux.conf .tmux.conf.local .vimrc .wgetrc .zshrc ~/.dotfiles-backup 2>/dev/null
 
 # Backup done!
 echo 'Backup done!'
@@ -21,9 +21,7 @@ echo 'Starting install new dotfiles'
 git clone https://github.com/NguyenTrungTin/dotfiles ~/.dotfiles
 
 # Let's install new dotfiles
-cd ~/.dotfiles
-cp .aliases .bashrc .ctags .curlrc .editorconfig .gitconfig .gitignore .hyper.js .inputrc .tmux.conf .tmux.conf.local .vimrc .wgetrc .zshrc ~/
-cd ~
+cp ~/.dotfiles/.* ~/
 
 # Done!
 echo 'Install dotfiles successfully. Done!'
