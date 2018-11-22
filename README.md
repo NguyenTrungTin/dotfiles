@@ -1,5 +1,6 @@
 ![Dotfiles](screenshot.png)
 
+
 # My macOS and Linux dotfiles
 
 > Dotfiles are awesome!
@@ -56,7 +57,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Credits
 
-** This project is heavily inspired by awesome opensourcer and books: **
+*This project is heavily inspired by awesome opensourcer and books:*
 
 > Awesome dotfiles: 
 - [Mathias Bynens's dotfiles](https://github.com/mathiasbynens/dotfiles)

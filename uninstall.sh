@@ -3,11 +3,12 @@
 # Cd Home Directory
 cd ~
 
-# Uninstall dotfiles
-echo 'Starting uninstall dotfiles...'
-rm -f .aliases .bashrc .ctags .curlrc .editorconfig .gitconfig .gitignore .hyper.js .inputrc .tmux.conf .tmux.conf.local .vimrc .wgetrc .zshrc
+# Dotfiles
+ DOTFILES='.aliases .bashrc .ctags .curlrc .editorconfig .gitconfig .gitignore .hyper.js .inputrc .tmux.conf .tmux.conf.local .vimrc .wgetrc .zshrc'
 
-rm -rf /.dotfiles
+# Uninstall dotfiles
+echo 'Uninstalling dotfiles...'
+rm -f $DOTFILES
 
 # Revert old dotfiles
 echo 'Reverting old dotfiles...'
