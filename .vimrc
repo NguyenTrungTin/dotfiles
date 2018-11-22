@@ -130,6 +130,7 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	Plug 'christoomey/vim-tmux-navigator'
     Plug 'chrisbra/unicode.vim'
     Plug 'godlygeek/tabular'
     Plug 'tpope/vim-surround'
@@ -140,12 +141,20 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'tpope/vim-unimpaired'
     Plug 'tomtom/tcomment_vim'
     Plug 'tpope/vim-commentary'
-    Plug 'junegunn/goyo.vim'
+	Plug 'kien/rainbow_parentheses.vim'
     Plug 'amix/vim-zenroom2'
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
     Plug 'majutsushi/tagbar'
-    Plug '~/.fzf'
+	Plug 'kien/rainbow_parentheses.vim'
+    Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/limelight.vim'
+	Plug 'junegunn/gv.vim'
+	Plug 'junegunn/vim-easy-align'
+	Plug 'junegunn/vim-emoji'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
+	Plug 'mileszs/ack.vim'
 
     " Generic Language Support
     Plug 'w0rp/ale'
@@ -233,14 +242,14 @@ let g:airline#extensions#syntastic#enabled = 1
 " Redefine trigger key for Emmet
 " http://docs.emmet.io/cheat-sheet/
 
-let g:user_emmet_leader_key="<C-E>"
+" let g:user_emmet_leader_key="C-y"
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 " Load custom Emmet snippets
 " http://docs.emmet.io/customization/snippets/
 
-" let g:user_emmet_settings = webapi#json#decode(join(readfile(expand("~/.vim/snippets/emmet.json")), "\n"))
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand("~/.vim/snippets/emmet.json")), "\n"))
 
 
 " ----------------------------------------------------------------------
@@ -339,6 +348,70 @@ let g:tagbar_type_go = {
 	\ 'ctagsbin'  : 'gotags',
 	\ 'ctagsargs' : '-sort -silent'
 \ }
+
+
+" ----------------------------------------------------------------------
+" | Plugins - vim-easy-align
+" ----------------------------------------------------------------------
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" ----------------------------------------------------------------------
+" | Plugins - vim-emoji
+" ----------------------------------------------------------------------
+
+" Using Emojis as Git Gutter symbols
+" let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+" let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+" let g:gitgutter_sign_modified_removed = emoji#for('collision')
+
+"  Emoji completion
+" au FileType gitcommit setlocal completefunc=emoji#complete
+" setlocal completefunc=emoji#complete
+" command! -range EmojiReplace <line1>,<line2>s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
+
+" ----------------------------------------------------------------------
+" | Plugins - limelight.vim
+" ----------------------------------------------------------------------
+
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.5
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 7
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
+
+" ----------------------------------------------------------------------
+" | Plugins - ALE (Asynchronous Lint Engine)
+" ----------------------------------------------------------------------
+
+" Enable Completion
+let g:ale_completion_enabled = 1
 
 " ----------------------------------------------------------------------
 " | Helper Functions                                                   |
@@ -536,6 +609,14 @@ let mapleader = ","
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+" Open fzf
+map <leader>f :FZF<CR>
+
+" Open fzf on fullscreen
+map <leader>!f :FZF!<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 " [,* ] Search and replace the word under the cursor
 nmap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
@@ -606,6 +687,14 @@ nmap <leader>v :vsp $MYVIMRC<CR>
 
 " [,W ] Sudo write
 map <leader>W :w !sudo tee %<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" Show all git commits for this project
+map <leader>gv :GV<CR>
+
+" Show commits that affected the current file
+map <leader>g! :GV!<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

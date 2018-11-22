@@ -65,11 +65,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='mvim'
-fi
+export EDITOR='vim'
 
 # Set Vim mode for terminal
 set -o vi
@@ -109,5 +105,11 @@ alias chrome='/opt/google/chrome/chrome'
 # Emacs
 alias emacs='emacs --no-window-system'
 
+# xclip
+alias xclip='xclip -selection -c'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# rbenv for Ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
