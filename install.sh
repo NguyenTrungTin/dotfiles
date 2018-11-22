@@ -35,7 +35,7 @@ mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undos
 mkdir -p ~/.vim/snippets
-mv ~/.dotfiles/snippets/* ~/.vim/snippets/
+mv ~/.dotfiles/.vim/snippets/* ~/.vim/snippets/
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
