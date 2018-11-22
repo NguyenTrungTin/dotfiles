@@ -1,4 +1,4 @@
-# [![Dotfiles] (screenshot.png)]
+![Dotfiles](screenshot.png)
 
 # My macOS and Linux dotfiles
 
