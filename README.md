@@ -1,4 +1,4 @@
-# [! [Dotfiles] (screenshots.png)]
+# [![Dotfiles] (screenshot.png)]
 
 # My macOS and Linux dotfiles
 
@@ -6,24 +6,25 @@
 
 ## Getting Started
 
-There are my dotfiles that I use on my macOS and Linux machine. The main focus are about VIM and Tmux and ZSH. This repository also contain `.icons`, `.themes` and `.fonts` that I used on my Ubuntu desktop. 
+There are my dotfiles that I use on my macOS and Linux machine. The main focus are about VIM and Tmux and ZSH. 
 
 Please consider that all settings in there are just for my persional value. You can clone this repository and customize some settings before installing.
 
-The `install.sh` scripts will automatically backup your current dotfiles into the `dotfiles-backup` directory. So you can revert if you want.
-
 ### Prerequisites
 
-You need to have the `git`, `VIM`, `Tmux`, `wget/curl` on your machine first. Of course! 
+You need to have the `git`, `VIM`, `Tmux`, `curl/wget` on your machine first. Of course! 
 
-It's not mandatory but it's better if you install all util tools on your machine. These are awesome tools and help you become much more productivity! 
+It's not mandatory but it's better if you install all util tools on your machine. These are awesome tools and will help you become much more productivity! 
 
 - [ack](https://beyondgrep.com/) - a tool like grep, optimized for programmers
 - [rg](https://github.com/BurntSushi/ripgrep) - ripgrep - recursively searches directories for a regex pattern
 - [fzf](https://github.com/junegunn/fzf) - A command-line fuzzy finder
+- [ctags](http://ctags.sourceforge.net/) - A multilanguage implementation of Ctags
 - [Tmuxinator](https://github.com/tmuxinator/tmuxinator)- Manage complex tmux sessions easily
 
 ### Installing
+
+The [install.sh](install.sh) scripts will automatically backup your current dotfiles into the `~/.dotfiles-backup` directory. So you can revert if you want.
 
 To install dotfiles, you can use the install script using cURL:
 
@@ -42,7 +43,7 @@ wget -qO- https://raw.githubusercontent.com/NguyenTrungTin/dotfiles/master/insta
 To uninstall/revert to your previous dotfiles, you can use the uninstall script using cURL/Wget. For Example:
 
 ```sh
-curl -o- curl -o- https://raw.githubusercontent.com/NguyenTrungTin/dotfiles/master/uninstall.sh | bash
+curl -o- https://raw.githubusercontent.com/NguyenTrungTin/dotfiles/master/uninstall.sh | bash
 ```
 
 ## Contributing
