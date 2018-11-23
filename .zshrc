@@ -113,3 +113,7 @@ alias xclip='xclip -selection -c'
 # rbenv for Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Use `gi` command to generate .gitignore file.
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
