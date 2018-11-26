@@ -7,13 +7,13 @@
 
 ## Getting Started
 
-There are my dotfiles that I use on my macOS and Linux machine. The main focus are about VIM, Tmux and ZSH. 
+There are my dotfiles that I use on my macOS and Linux machine. The main focus are about `VIM`, `NVIM`, `Tmux` and `ZSH`. 
 
 Please consider that all settings in there are just for my persional value. You can clone this repository and customize some settings before installing.
 
 ### Prerequisites
 
-You need to have the `git`, `curl/wget`, `Node`, `yarn`, `VIM`, `Tmux` on your system first. Of course! 
+You need to have the `git`, `curl/wget`, `Python3`, `Node`, `yarn`, `VIM`, `NVIM`, `Tmux` on your system first. Of course! 
 
 It's not mandatory but it's better if you install all util tools on your machine. These are awesome tools and will help you become much more productivity! 
 
@@ -22,6 +22,13 @@ It's not mandatory but it's better if you install all util tools on your machine
 - [fzf](https://github.com/junegunn/fzf) - A command-line fuzzy finder
 - [ctags](http://ctags.sourceforge.net/) - A multilanguage implementation of Ctags
 - [Tmuxinator](https://github.com/tmuxinator/tmuxinator)- Manage complex tmux sessions easily
+
+> If you using Debian/Ubuntu, you can install utility/dependencies above using this command:
+
+```sh
+sudo curl -o- https://raw.githubusercontent.com/NguyenTrungTin/dotfiles/master/ubuntu.sh | bash
+```
+After done, can continue with [Installing](#Installing)
 
 ### Installing
 

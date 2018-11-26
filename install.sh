@@ -5,7 +5,7 @@ cd ~
 
 # Dotfiles
 DOTFILES='.aliases .bashrc .ctags .curlrc .editorconfig .gitconfig .gitignore .hyper.js .inputrc .tmux.conf .tmux.conf.local .vimrc .wgetrc .zshrc'
-DOTDIR='.vim/ .tmux/ .hyper_plugins/ .oh-my-zsh/'
+DOTDIR='.vim/ .config/nvim/ .tmux/ .hyper_plugins/ .oh-my-zsh/'
 
 # Create backup directory
 echo 'Starting backup dotfiles process...'
@@ -36,9 +36,11 @@ mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undos
 mkdir -p ~/.vim/snippets
 cp -r ~/.dotfiles/.vim/snippets/* ~/.vim/snippets/
+cp -r ~/.dotfiles/.config/nvim/* ~/.config/nvim/
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
+python3 ~/.vim/plugged/YouCompleteMe/install.py --go-completer --ts-completer
 
 # Setup for Tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

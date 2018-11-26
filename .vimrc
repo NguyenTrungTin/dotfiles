@@ -146,7 +146,6 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
     Plug 'majutsushi/tagbar'
-	Plug 'kien/rainbow_parentheses.vim'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
 	Plug 'junegunn/gv.vim'
@@ -157,6 +156,7 @@ set winminheight=0             " Allow windows to be squashed
 	Plug 'mileszs/ack.vim'
 
     " Generic Language Support
+    Plug 'Valloric/YouCompleteMe'
     Plug 'w0rp/ale'
     Plug 'scrooloose/syntastic'
     Plug 'editorconfig/editorconfig-vim'
@@ -164,11 +164,10 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'mattn/emmet-vim'
     Plug 'raimondi/delimitmate'
     Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'shougo/neosnippet'
-    Plug 'shougo/neocomplcache.vim'
-    Plug 'shougo/neosnippet-snippets'
+	Plug 'SirVer/ultisnips'
     Plug 'airblade/vim-gitgutter'
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+	Plug 'Shougo/neocomplete.vim'
 
     " HTML/CSS
     Plug 'ap/vim-css-color'
@@ -177,13 +176,17 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'tpope/vim-haml'
 
     " Javascript
-    Plug 'jelera/vim-javascript-syntax'
+	Plug 'pangloss/vim-javascript'
+	Plug 'othree/javascript-libraries-syntax.vim'
     Plug 'marijnh/tern_for_vim', { 'do': 'yarn install'}
     Plug 'shutnik/jshint2.vim'
 
     " Typescript
 	Plug 'leafgarland/typescript-vim'
 	Plug 'Quramy/tsuquyomi'
+
+	" GraphQL
+	Plug 'jparise/vim-graphql'
 
     " JSON
     Plug 'elzr/vim-json'
@@ -192,7 +195,7 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'plasticboy/vim-markdown'
 
     " React
-    Plug 'mxw/vim-jsx'
+	Plug 'MaxMEllon/vim-jsx-pretty'
 
     " Vue
     Plug 'posva/vim-vue'
@@ -216,6 +219,7 @@ set winminheight=0             " Allow windows to be squashed
 	Plug 'dracula/vim'
     Plug 'morhetz/gruvbox'
     Plug 'mhartington/oceanic-next'
+	Plug 'kaicataldo/material.vim'
     Plug 'jdkanani/vim-material-theme'
 	Plug 'kristijanhusak/vim-hybrid-material'
     Plug 'whatyouhide/vim-gotham'
@@ -230,10 +234,6 @@ set winminheight=0             " Allow windows to be squashed
 " Airline Powerline Symbols
 
 let g:airline_powerline_fonts = 1
-
-" Enable/disable syntastic integration
-
-let g:airline#extensions#syntastic#enabled = 1
 
 " ----------------------------------------------------------------------
 " | Plugins - Emmet                                                    |
@@ -281,13 +281,15 @@ let g:vim_markdown_folding_disabled=1
 
 
 " ----------------------------------------------------------------------
-" | Plugins - NeoComplCache                                            |
+" | Plugins - neocomplete.vim                                            |
 " ----------------------------------------------------------------------
 
-" Enable `neocomplcache` by default
-" https://github.com/Shougo/neocomplcache.vim#installation
+" Enable `neocomplete` by default
+let g:neocomplete#enable_at_startup = 1
 
-let g:neocomplcache_enable_at_startup=1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -299,6 +301,16 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " ----------------------------------------------------------------------
 " | Plugins - Syntastic                                                |
 " ----------------------------------------------------------------------
+
+" Enable/disable syntastic integration
+
+let g:airline#extensions#syntastic#enabled = 1
+
+" Customize Symbols
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+let g:syntastic_style_error_symbol = '✘'
+let g:syntastic_style_warning_symbol = "▲"
 
 " Inform Syntastic which checkers to use based on file types
 " https://github.com/scrooloose/syntastic#3-faq
@@ -375,6 +387,7 @@ nmap ga <Plug>(EasyAlign)
 " setlocal completefunc=emoji#complete
 " command! -range EmojiReplace <line1>,<line2>s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 
+
 " ----------------------------------------------------------------------
 " | Plugins - limelight.vim
 " ----------------------------------------------------------------------
@@ -406,12 +419,77 @@ let g:limelight_priority = -1
 " autocmd! User GoyoEnter Limelight
 " autocmd! User GoyoLeave Limelight!
 
+
 " ----------------------------------------------------------------------
 " | Plugins - ALE (Asynchronous Lint Engine)
 " ----------------------------------------------------------------------
 
 " Enable Completion
 let g:ale_completion_enabled = 1
+
+" Enable Airline intergration
+let g:airline#extensions#ale#enabled = 1
+
+" Customize Symbols
+let g:ale_sign_error = '✘' " Customize default symbol '>>' or '◉'
+let g:ale_sign_warning = '▲' " Customize default symbol '--'
+
+
+" ----------------------------------------------------------------------
+" | Plugins - Solarized Color Scheme
+" ----------------------------------------------------------------------
+
+" Set custom configurations for when the
+" Solarized theme is used from vim's Terminal mode
+" http://ethanschoonover.com/solarized/vim-colors-solarized#advanced-configuration
+
+if !has("gui_running")
+    let g:solarized_contrast = "high"
+    let g:solarized_termcolors = 256
+    let g:solarized_termtrans = 1
+    let g:solarized_visibility = "high"
+endif
+
+
+" ----------------------------------------------------------------------
+" | Plugins - Material.vim
+" ----------------------------------------------------------------------
+
+" let g:material_theme_style = 'default'
+let g:material_terminal_italics = 1
+
+
+" ----------------------------------------------------------------------
+" | Plugins - vim-javascript
+" ----------------------------------------------------------------------
+
+let g:javascript_plugin_jsdoc = 1
+
+
+" ----------------------------------------------------------------------
+" | Plugins - Oceanic-Next
+" ----------------------------------------------------------------------
+
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+
+
+" ----------------------------------------------------------------------
+" | Plugins - Gitgutter
+" ----------------------------------------------------------------------
+
+" Customize Symbols
+let g:gitgutter_sign_added = '⚡' "✔✚
+let g:gitgutter_sign_modified = '➜'
+let g:gitgutter_sign_removed = '✘'
+let g:gitgutter_sign_modified_removed = '✘'
+
+
+" ----------------------------------------------------------------------
+" | Plugins - deoplete.nvim
+" ----------------------------------------------------------------------
+
+let g:deoplete#enable_at_startup = 1
 
 " ----------------------------------------------------------------------
 " | Helper Functions                                                   |
@@ -553,21 +631,18 @@ endif
 " | Color Scheme                                                       |
 " ----------------------------------------------------------------------
 
+" For Vim 7
 set t_Co=256                   " Enable full-color support
+
+" Termguicolors for Vim 8
+if (has("termguicolors"))
+  set termguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 set background=dark            " Use colors that look good
                                " on a dark background
-
-" Set custom configurations for when the
-" Solarized theme is used from vim's Terminal mode
-" http://ethanschoonover.com/solarized/vim-colors-solarized#advanced-configuration
-
-if !has("gui_running")
-    let g:solarized_contrast = "high"
-    let g:solarized_termcolors = 256
-    let g:solarized_termtrans = 1
-    let g:solarized_visibility = "high"
-endif
 
 " Set font for Gui
 if has("gui_running")
@@ -580,6 +655,7 @@ if has("gui_running")
   endif
 endif
 
+" Colorscheme
 colorscheme gruvbox          " Use custom color scheme
 
 " ----------------------------------------------------------------------
@@ -713,6 +789,11 @@ nnoremap <f5> :!ctags -R<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+" ALE Fixing Problems
+nmap <F7> <Plug>(ale_fix)
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 " Edit file in current path
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -726,30 +807,30 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "   2) cterm (color terminals, e.g.: MS-DOS console, color-xterm)
 "   3) gui   (GUIs)
 
-highlight ColorColumn
-    \ term=NONE
-    \ cterm=NONE  ctermbg=237    ctermfg=NONE
-    \ gui=NONE    guibg=#073642  guifg=NONE
-
-highlight CursorLine
-    \ term=NONE
-    \ cterm=NONE  ctermbg=235  ctermfg=NONE
-    \ gui=NONE    guibg=#073642  guifg=NONE
-
-highlight CursorLineNr
-    \ term=bold
-    \ cterm=bold  ctermbg=NONE   ctermfg=178
-    \ gui=bold    guibg=#073642  guifg=Orange
-
-highlight LineNr
-    \ term=NONE
-    \ cterm=NONE  ctermfg=241    ctermbg=NONE
-    \ gui=NONE    guifg=#839497  guibg=#073642
-
-highlight User1
-    \ term=NONE
-    \ cterm=NONE  ctermbg=237    ctermfg=Grey
-    \ gui=NONE    guibg=#073642  guifg=#839496
+" highlight ColorColumn
+"     \ term=NONE
+"     \ cterm=NONE  ctermbg=237    ctermfg=NONE
+"     \ gui=NONE    guibg=#073642  guifg=NONE
+"
+" highlight CursorLine
+"     \ term=NONE
+"     \ cterm=NONE  ctermbg=235  ctermfg=NONE
+"     \ gui=NONE    guibg=#073642  guifg=NONE
+"
+" highlight CursorLineNr
+"     \ term=bold
+"     \ cterm=bold  ctermbg=NONE   ctermfg=178
+"     \ gui=bold    guibg=#073642  guifg=Orange
+"
+" highlight LineNr
+"     \ term=NONE
+"     \ cterm=NONE  ctermfg=241    ctermbg=NONE
+"     \ gui=NONE    guifg=#839497  guibg=#073642
+"
+" highlight User1
+"     \ term=NONE
+"     \ cterm=NONE  ctermbg=237    ctermfg=Grey
+"     \ gui=NONE    guibg=#073642  guifg=#839496
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
