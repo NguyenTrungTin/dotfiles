@@ -3,12 +3,21 @@
 # Install common dependencies
 sudo apt -y install software-properties-common build-essential checkinstall wget curl git libssl-dev apt-transport-https ca-certificates
 
+# Install EditorConfig
+sudo apt-get install editorconfig
+
 # Install Nodejs via nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 nvm install --lts
 
 # Install Yarn
 sudo apt-get update && sudo apt-get install --no-install-recommends yarn
+
+# Install eslint
+sudo npm install -g eslint
+
+# Install Instant Markdown
+sudo npm -g install instant-markdown-d
 
 # Install vim
 sudo apt-get install vim-gtk

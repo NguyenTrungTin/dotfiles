@@ -158,11 +158,12 @@ set winminheight=0             " Allow windows to be squashed
     " Generic Language Support
     Plug 'Valloric/YouCompleteMe'
     Plug 'w0rp/ale'
+    Plug 'sheerun/vim-polyglot'
     Plug 'scrooloose/syntastic'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'mattn/webapi-vim'
     Plug 'mattn/emmet-vim'
-    Plug 'raimondi/delimitmate'
+	Plug 'jiangmiao/auto-pairs'
     Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'SirVer/ultisnips'
     Plug 'airblade/vim-gitgutter'
@@ -179,11 +180,13 @@ set winminheight=0             " Allow windows to be squashed
 	Plug 'pangloss/vim-javascript'
 	Plug 'othree/javascript-libraries-syntax.vim'
     Plug 'marijnh/tern_for_vim', { 'do': 'yarn install'}
-    Plug 'shutnik/jshint2.vim'
 
     " Typescript
 	Plug 'leafgarland/typescript-vim'
 	Plug 'Quramy/tsuquyomi'
+
+	" Node
+	Plug 'moll/vim-node'
 
 	" GraphQL
 	Plug 'jparise/vim-graphql'
@@ -193,6 +196,7 @@ set winminheight=0             " Allow windows to be squashed
 
     " Markdown
     Plug 'plasticboy/vim-markdown'
+    Plug 'suan/vim-instant-markdown'
 
     " React
 	Plug 'MaxMEllon/vim-jsx-pretty'
@@ -281,21 +285,34 @@ let g:vim_markdown_folding_disabled=1
 
 
 " ----------------------------------------------------------------------
-" | Plugins - neocomplete.vim                                            |
+" | Plugins - Instant Markdown                                         |
+" ----------------------------------------------------------------------
+
+" Do not automatically launch the preview
+" window when the markdown file is open.
+" https://github.com/suan/vim-instant-markdown#ginstant_markdown_autostart
+
+let g:instant_markdown_autostart = 0
+
+
+" ----------------------------------------------------------------------
+" | Plugins - neocomplete.vim                                           |
 " ----------------------------------------------------------------------
 
 " Enable `neocomplete` by default
 let g:neocomplete#enable_at_startup = 1
-
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 " Make `<TAB>` autocomplete
 
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" Make `Shift+Tab` insert `Tab` character.
+
+inoremap <S-TAB> <C-V><TAB>
 
 
 " ----------------------------------------------------------------------
@@ -313,10 +330,9 @@ let g:syntastic_style_error_symbol = '✘'
 let g:syntastic_style_warning_symbol = "▲"
 
 " Inform Syntastic which checkers to use based on file types
-" https://github.com/scrooloose/syntastic#3-faq
+" https://github.com/scrooloose/syntastic#faq
 
-let g:syntastic_html_checkers = [ "jshint" ]
-let g:syntastic_javascript_checkers = [ "jshint" ]
+let g:syntastic_javascript_checkers = [ 'eslint' ]
 
 " Disable syntax checking by default
 let g:syntastic_mode_map = {
@@ -478,6 +494,9 @@ let g:oceanic_next_terminal_italic = 1
 " | Plugins - Gitgutter
 " ----------------------------------------------------------------------
 
+" Disable Gitgutter by default
+let g:gitgutter_enabled = 0
+
 " Customize Symbols
 let g:gitgutter_sign_added = '⚡' "✔✚
 let g:gitgutter_sign_modified = '➜'
@@ -490,6 +509,16 @@ let g:gitgutter_sign_modified_removed = '✘'
 " ----------------------------------------------------------------------
 
 let g:deoplete#enable_at_startup = 1
+
+" ----------------------------------------------------------------------
+" | Plugins - UltiSnips
+" ----------------------------------------------------------------------
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<Right>"
+let g:UltiSnipsJumpForwardTrigger="<Right>"
+let g:UltiSnipsJumpBackwardTrigger="<Left>"
+
 
 " ----------------------------------------------------------------------
 " | Helper Functions                                                   |
@@ -606,15 +635,10 @@ if has("autocmd")
 
     augroup strip_trailing_whitespaces
 
-        " List of file types that use the trailing whitespaces:
-        "
-        "  * Markdown
-        "    https://daringfireball.net/projects/markdown/syntax#block
+        " List of file types that use the trailing whitespace
+		" should not be removed:
 
-        let excludedFileTypes = [
-            \ "markdown",
-            \ "mkd.markdown"
-        \]
+        let excludedFileTypes = []
 
         " Only strip the trailing whitespaces if the file type is
         " not in the excluded file types list
@@ -685,10 +709,10 @@ let mapleader = ","
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" Open fzf
+" [,f] Open fzf
 map <leader>f :FZF<CR>
 
-" Open fzf on fullscreen
+" [,!f] Open fzf on fullscreen
 map <leader>!f :FZF!<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -715,12 +739,6 @@ map <leader>cs <Esc>:noh<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" [,h ] JSHint the code
-" https://github.com/Shutnik/jshint2.vim
-nmap <leader>h :JSHint<CR>
-
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 " [,l ] Toggle `set list`
 nmap <leader>l :set list!<CR>
 
@@ -733,6 +751,18 @@ nmap <leader>n :call ToggleRelativeLineNumbers()<CR>
 
 " [,ss] Strip trailing whitespace
 nmap <leader>ss :call StripTrailingWhitespaces()<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" [,sh] Show hex dump.
+
+nmap <leader>sh :%!xxd<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" [,sr] Strip carriage returns.
+
+nmap <leader>sr :%s/\r//g<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -763,6 +793,12 @@ nmap <leader>v :vsp $MYVIMRC<CR>
 
 " [,W ] Sudo write
 map <leader>W :w !sudo tee %<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" [,gd] Toggle Git differences.
+
+map <leader>gd :GitGutterToggle<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
