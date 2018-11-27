@@ -166,6 +166,7 @@ set winminheight=0             " Allow windows to be squashed
 	Plug 'jiangmiao/auto-pairs'
     Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'SirVer/ultisnips'
+	Plug 'ervandew/supertab'
     Plug 'airblade/vim-gitgutter'
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 	Plug 'Shougo/neocomplete.vim'
@@ -245,8 +246,13 @@ let g:airline_powerline_fonts = 1
 
 " Redefine trigger key for Emmet
 " http://docs.emmet.io/cheat-sheet/
-
 " let g:user_emmet_leader_key="C-y"
+
+"Using <Tab> key as abbreviation expander on Emmet.vim
+" For <Tab> key, please take a look on SuperTab plugin for more detail.
+" https://coderwall.com/p/_uhrxw/using-tab-key-as-abbreviation-expander-on-emmet-vim
+
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -514,11 +520,15 @@ let g:deoplete#enable_at_startup = 1
 " | Plugins - UltiSnips
 " ----------------------------------------------------------------------
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<Right>"
-let g:UltiSnipsJumpForwardTrigger="<Right>"
-let g:UltiSnipsJumpBackwardTrigger="<Left>"
-
+" YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+" (via http://stackoverflow.com/a/22253548/1626737)
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 " ----------------------------------------------------------------------
 " | Helper Functions                                                   |
@@ -783,6 +793,11 @@ nmap <leader>tl :call ToggleLimits()<CR>
 
 " [,ts] Toggle Syntastic
 nmap <leader>ts :SyntasticToggleMode<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" [,p] :Prettier
+nmap <Leader>p <Plug>(Prettier)
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
