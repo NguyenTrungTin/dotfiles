@@ -157,7 +157,6 @@ set winminheight=0             " Allow windows to be squashed
 
     " Generic Language Support
     Plug 'Valloric/YouCompleteMe'
-    Plug 'w0rp/ale'
     Plug 'sheerun/vim-polyglot'
     Plug 'scrooloose/syntastic'
     Plug 'editorconfig/editorconfig-vim'
@@ -170,6 +169,7 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'airblade/vim-gitgutter'
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 	Plug 'Shougo/neocomplete.vim'
+    " Plug 'w0rp/ale' " Disable because it conflict with YouCompleteMe
 
     " HTML/CSS
     Plug 'ap/vim-css-color'
@@ -445,16 +445,17 @@ let g:limelight_priority = -1
 " ----------------------------------------------------------------------
 " | Plugins - ALE (Asynchronous Lint Engine)
 " ----------------------------------------------------------------------
+" Disable because it conflict with YouCompleteMe
 
 " Enable Completion
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 
 " Enable Airline intergration
-let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#ale#enabled = 1
 
 " Customize Symbols
-let g:ale_sign_error = '✘' " Customize default symbol '>>' or '◉'
-let g:ale_sign_warning = '▲' " Customize default symbol '--'
+" let g:ale_sign_error = '✘' " Customize default symbol '>>' or '◉'
+" let g:ale_sign_warning = '▲' " Customize default symbol '--'
 
 
 " ----------------------------------------------------------------------
@@ -840,13 +841,14 @@ nnoremap <f5> :!ctags -R<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" ALE Fixing Problems
-nmap <F7> <Plug>(ale_fix)
+" Edit file in current path
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" Edit file in current path
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" ALE Fixing Problems
+" nmap <F7> <Plug>(ale_fix)
+
 
 " ----------------------------------------------------------------------
 " | Status Line                                                        |
