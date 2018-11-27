@@ -4,8 +4,8 @@
 cd ~
 
 # Dotfiles
- DOTFILES='.aliases .bashrc .ctags .curlrc .editorconfig .gitconfig .gitignore .hyper.js .inputrc .tmux.conf .tmux.conf.local .vimrc .wgetrc .zshrc'
-DOTDIR='.vim/ .tmux/ .hyper_plugins/ .oh-my-zsh/'
+DOTFILES='.aliases .bashrc .ctags .curlrc .editorconfig .gitconfig .gitignore .hyper.js .inputrc .tmux.conf .tmux.conf.local .vimrc .wgetrc .zshrc'
+DOTDIR='.vim/ .config/nvim/ .tmux/ .hyper_plugins/ .oh-my-zsh/'
 
 # Uninstall dotfiles
 echo 'Uninstalling dotfiles...'
