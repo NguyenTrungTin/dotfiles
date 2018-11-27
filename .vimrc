@@ -165,6 +165,7 @@ set winminheight=0             " Allow windows to be squashed
 	Plug 'jiangmiao/auto-pairs'
     Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
 	Plug 'ervandew/supertab'
     Plug 'airblade/vim-gitgutter'
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -530,6 +531,19 @@ let g:UltiSnipsJumpForwardTrigger      = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+" ----------------------------------------------------------------------
+" | Plugins - vim-prettier
+" ----------------------------------------------------------------------
+
+" Number of spaces per indentation level
+" Prettier default: 2
+let g:prettier#config#tab_width = 4
+
+" Use tabs over spaces
+" Prettier default: false
+let g:prettier#config#use_tabs = 'true'
+
 
 " ----------------------------------------------------------------------
 " | Helper Functions                                                   |
