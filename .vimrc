@@ -145,6 +145,7 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'amix/vim-zenroom2'
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
+	Plug 'easymotion/vim-easymotion'
     Plug 'majutsushi/tagbar'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
@@ -350,6 +351,17 @@ let g:syntastic_mode_map = {
 
 
 " ----------------------------------------------------------------------
+" | Plugins - vim-easymotion
+" ----------------------------------------------------------------------
+
+" Disable default mappings
+let g:EasyMotion_do_mapping = 0
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+
+" ----------------------------------------------------------------------
 " | Plugins - Tagbar
 " ----------------------------------------------------------------------
 
@@ -441,6 +453,21 @@ let g:limelight_priority = -1
 
 " autocmd! User GoyoEnter Limelight
 " autocmd! User GoyoLeave Limelight!
+
+
+" ----------------------------------------------------------------------
+" | Plugins - YouCompleteMe
+" ----------------------------------------------------------------------
+
+" Use Python 3
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
+
+" Auto Close preview window after insertion
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Disable showing error when server crash
+let g:ycm_log_level = 'critical'
+let g:ycm_server_use_vim_stdout = 0
 
 
 " ----------------------------------------------------------------------
@@ -788,6 +815,21 @@ nmap <leader>sh :%!xxd<CR>
 " [,sr] Strip carriage returns.
 
 nmap <leader>sr :%s/\r//g<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" [,s] easymotion
+nmap <leader>s <Plug>(easymotion-overwin-f)
+
+" JK motions: Line motions
+" [,j] easymotion-j
+map <Leader>j <Plug>(easymotion-j)
+
+" [,k] easymotion-k
+map <Leader>k <Plug>(easymotion-k)
+
+" 2-character search motion
+nmap <leader>sw <Plug>(easymotion-s2)
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
