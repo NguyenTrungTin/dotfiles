@@ -117,3 +117,6 @@ eval "$(rbenv init -)"
 # Use `gi` command to generate .gitignore file.
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
+# Fix python error for YouCompleteMe
+export DYLD_FORCE_FLAT_NAMESPACE=1
+

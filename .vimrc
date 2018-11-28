@@ -141,7 +141,7 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'tpope/vim-unimpaired'
     Plug 'tomtom/tcomment_vim'
     Plug 'tpope/vim-commentary'
-	Plug 'kien/rainbow_parentheses.vim'
+	Plug 'junegunn/rainbow_parentheses.vim'
     Plug 'amix/vim-zenroom2'
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
