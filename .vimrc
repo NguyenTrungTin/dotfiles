@@ -222,14 +222,14 @@ set winminheight=0             " Allow windows to be squashed
 	Plug 'ryanoasis/vim-devicons'
     Plug 'altercation/vim-colors-solarized'
     Plug 'joshdick/onedark.vim'
-	Plug 'dracula/vim'
+	Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'morhetz/gruvbox'
     Plug 'mhartington/oceanic-next'
 	Plug 'kaicataldo/material.vim'
     Plug 'jdkanani/vim-material-theme'
 	Plug 'kristijanhusak/vim-hybrid-material'
     Plug 'whatyouhide/vim-gotham'
-
+    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     " Initialize plugin system
     call plug#end()
 
