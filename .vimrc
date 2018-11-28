@@ -158,7 +158,6 @@ set winminheight=0             " Allow windows to be squashed
 
     " Generic Language Support
     Plug 'Valloric/YouCompleteMe'
-    Plug 'sheerun/vim-polyglot'
     Plug 'scrooloose/syntastic'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'mattn/webapi-vim'
@@ -171,7 +170,8 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'airblade/vim-gitgutter'
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 	Plug 'Shougo/neocomplete.vim'
-    " Plug 'w0rp/ale' " Disable because it conflict with YouCompleteMe
+    " Plug 'w0rp/ale' " Disable because of conflicting with YouCompleteMe
+    " Plug 'sheerun/vim-polyglot' " Disable because of conficting with vim-go
 
     " HTML/CSS
     Plug 'ap/vim-css-color'
