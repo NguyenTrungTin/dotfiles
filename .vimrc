@@ -14,6 +14,7 @@ if has("autocmd")
 endif
 
 set autoindent                 " Copy indent to the new line
+set autowrite				   " Automatically save before :next, :make etc.
 
 set backspace=indent           " ┐
 set backspace+=eol             " │ Allow `backspace`
@@ -233,6 +234,91 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     " Initialize plugin system
     call plug#end()
+
+
+" ----------------------------------------------------------------------
+" | Plugins - Vim-Go                                              |
+" ----------------------------------------------------------------------
+
+" https://github.com/fatih/vim-go-tutorial
+
+" let g:go_fmt_fail_silently = 1
+let g:go_fmt_command = "goimports"
+let g:go_fmt_options = {
+			\ 'goimports': '-local do/',
+			\ }
+
+let g:go_debug_windows = {
+      \ 'vars':  'leftabove 35vnew',
+      \ 'stack': 'botright 10new',
+	  \ }
+
+
+let g:go_test_prepend_name = 1
+let g:go_list_type = "quickfix"
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 0
+let g:go_info_mode = "gocode"
+
+let g:go_def_mode = "godef"
+let g:go_echo_command_info = 1
+let g:go_autodetect_gopath = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_enabled = ['vet', 'golint']
+
+" let g:go_highlight_space_tab_error = 0
+" let g:go_highlight_array_whitespace_error = 0
+" let g:go_highlight_trailing_whitespace_error = 0
+" let g:go_highlight_extra_types = 0
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_types = 0
+" let g:go_highlight_operators = 1
+" let g:go_highlight_format_strings = 0
+" let g:go_highlight_function_calls = 0
+" let g:go_gocode_propose_source = 1
+
+let g:go_modifytags_transform = 'camelcase'
+let g:go_fold_enable = []
+
+nmap <C-g> :GoDecls<cr>
+imap <C-g> <esc>:<C-u>GoDecls<cr>
+
+" run :GoBuild or :GoTestCompile based on the go file
+
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+augroup go
+  autocmd!
+
+  autocmd FileType go nmap <silent> <leader>gv <Plug>(go-def-vertical)
+  autocmd FileType go nmap <silent> <leader>gs <Plug>(go-def-split)
+  autocmd FileType go nmap <silent> <leader>gd <Plug>(go-def-tab)
+
+  autocmd FileType go nmap <silent> <leader>gx <Plug>(go-doc-vertical)
+
+  autocmd FileType go nmap <silent> <leader>gi <Plug>(go-info)
+  autocmd FileType go nmap <silent> <leader>gl <Plug>(go-metalinter)
+
+  autocmd FileType go nmap <silent> <leader>gb :<C-u>call <SID>build_go_files()<CR>
+  autocmd FileType go nmap <silent> <leader>gt  <Plug>(go-test)
+  autocmd FileType go nmap <silent> <leader>gr  <Plug>(go-run)
+  autocmd FileType go nmap <silent> <leader>ge  <Plug>(go-install)
+
+  autocmd FileType go nmap <silent> <leader>gc <Plug>(go-coverage-toggle)
+
+  " I like these more!
+  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+augroup END
 
 " ----------------------------------------------------------------------
 " | Plugins - Vim-Airline                                              |
@@ -853,6 +939,13 @@ nmap <leader>ts :SyntasticToggleMode<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+" Jump between errors in quickfix list
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 " [,p] :Prettier
 nmap <Leader>p <Plug>(Prettier)
 
@@ -870,12 +963,12 @@ map <leader>W :w !sudo tee %<CR>
 
 " [,gd] Toggle Git differences.
 
-map <leader>gd :GitGutterToggle<CR>
+map <leader>gg :GitGutterToggle<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 " Show all git commits for this project
-map <leader>gv :GV<CR>
+map <leader>gm :GV<CR>
 
 " Show commits that affected the current file
 map <leader>g! :GV!<CR>
