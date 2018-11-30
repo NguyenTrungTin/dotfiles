@@ -559,6 +559,7 @@ let g:ycm_server_use_vim_stdout = 0
 " ----------------------------------------------------------------------
 " | Plugins - ALE (Asynchronous Lint Engine)
 " ----------------------------------------------------------------------
+
 " Disable because it conflict with YouCompleteMe
 
 " Enable Completion
@@ -570,6 +571,29 @@ let g:ycm_server_use_vim_stdout = 0
 " Customize Symbols
 " let g:ale_sign_error = '✘' " Customize default symbol '>>' or '◉'
 " let g:ale_sign_warning = '▲' " Customize default symbol '--'
+
+
+" ----------------------------------------------------------------------
+" | Plugins - ack/ag.vim
+" ----------------------------------------------------------------------
+
+" Use Silver Searcher (ag) for maximum speed
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --smart-case'
+endif
+
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 
 " ----------------------------------------------------------------------
@@ -847,11 +871,23 @@ let mapleader = ","
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+" Bind jj to <Esc> in insert mode
+inoremap jj <esc>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 " [,f] Open fzf
 map <leader>f :FZF<CR>
 
 " [,!f] Open fzf on fullscreen
 map <leader>!f :FZF!<CR>
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" [,\] to grep word under cursor
+" :grep will map to 'ag' command instead for maximum speed (see ack/ag.vim)
+nnoremap <leader>\ :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

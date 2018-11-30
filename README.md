@@ -7,17 +7,18 @@
 
 ## Getting Started
 
-There are my dotfiles that I use on my macOS and Linux machine. The main focus are about `VIM`, `NVIM`, `Tmux` and `ZSH`. 
+There are my dotfiles that I use on my macOS and Linux machine. The main focus are about `VIM`, `NVIM`, `Tmux` and `ZSH`.
 
 Please consider that all settings in there are just for my persional value. You can clone this repository and customize some settings before installing.
 
 ### Prerequisites
 
-You need to have the `git`, `curl/wget`, `Python3`, `Node`, `yarn`, `VIM`, `NVIM`, `Tmux` on your system first. Of course! 
+You need to have the `git`, `curl/wget`, `Python3`, `Node`, `yarn`, `VIM`, `NVIM`, `Tmux` on your system first. Of course!
 
-It's not mandatory but it's better if you install all util tools on your machine. These are awesome tools and will help you become much more productivity! 
+It's not mandatory but it's better if you install all util tools on your machine. These are awesome tools and will help you become much more productivity!
 
-- [ack](https://beyondgrep.com/) - a tool like grep, optimized for programmers
+- [ag](https://github.com/ggreer/the_silver_searcher) - A code-searching tool similar to ack, but faster.
+- [ack](https://beyondgrep.com/) - A tool like grep, optimized for programmers
 - [rg](https://github.com/BurntSushi/ripgrep) - ripgrep - recursively searches directories for a regex pattern
 - [fzf](https://github.com/junegunn/fzf) - A command-line fuzzy finder
 - [ctags](http://ctags.sourceforge.net/) - A multilanguage implementation of Ctags
@@ -66,12 +67,12 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 *This project is heavily inspired by awesome opensourcer and books:*
 
-> Awesome dotfiles: 
+> Awesome dotfiles:
 - [Mathias Bynens's dotfiles](https://github.com/mathiasbynens/dotfiles)
 - [alrra's dotfiles](https://github.com/mathiasbynens/dotfiles)
 - [gpakosz's tmux config](https://github.com/gpakosz/.tmux)
 
-> Awesome Books: 
+> Awesome Books:
 - [Practical Vim: Edit Text at the Speed of Thought](https://pragprog.com/book/dnvim2/practical-vim-second-edition)
 - [Tmux 2: Productive Mouse-Free Development](https://pragprog.com/book/bhtmux2/tmux-2)
 
