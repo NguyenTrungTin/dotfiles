@@ -976,9 +976,9 @@ nmap <leader>ts :SyntasticToggleMode<CR>
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 " Jump between errors in quickfix list
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cm :cprevious<CR>
+nnoremap <leader>ca :cclose<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
