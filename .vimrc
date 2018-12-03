@@ -231,6 +231,7 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'jdkanani/vim-material-theme'
 	Plug 'kristijanhusak/vim-hybrid-material'
     Plug 'whatyouhide/vim-gotham'
+	Plug 'raphamorim/lucario'
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     " Initialize plugin system
     call plug#end()
