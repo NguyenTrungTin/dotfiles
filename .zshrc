@@ -94,7 +94,7 @@ export PATH="$PATH:`yarn global bin`"
 
 # Go Lang
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin:$PATH
+export GOPATH=$HOME/go
 
 # Rust Cargo
 export PATH=$PATH:$HOME/.cargo/bin
