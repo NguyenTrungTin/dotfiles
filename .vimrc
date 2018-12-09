@@ -140,6 +140,7 @@ set winminheight=0             " Allow windows to be squashed
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-unimpaired'
+	Plug 'matze/vim-move'
     Plug 'tomtom/tcomment_vim'
     Plug 'tpope/vim-commentary'
 	Plug 'junegunn/rainbow_parentheses.vim'
@@ -446,6 +447,14 @@ let g:EasyMotion_do_mapping = 0
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
+
+
+" ----------------------------------------------------------------------
+" | Plugins - Vim-move                                                 |
+" ----------------------------------------------------------------------
+
+" Custom modifier for keybindings
+let g:move_key_modifier = 'C'
 
 
 " ----------------------------------------------------------------------
