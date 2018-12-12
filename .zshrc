@@ -120,6 +120,7 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 # Python
 alias python=python3
+alias pip=pip3
 
 # Fix python error for YouCompleteMe
 export DYLD_FORCE_FLAT_NAMESPACE=1
