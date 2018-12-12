@@ -94,6 +94,7 @@ export PATH="$PATH:`yarn global bin`"
 
 # Go Lang
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 
 # Rust Cargo
@@ -116,6 +117,9 @@ eval "$(rbenv init -)"
 
 # Use `gi` command to generate .gitignore file.
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+# Python
+alias python=python3
 
 # Fix python error for YouCompleteMe
 export DYLD_FORCE_FLAT_NAMESPACE=1

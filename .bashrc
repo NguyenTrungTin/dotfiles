@@ -130,3 +130,6 @@ export GOPATH=$HOME/go
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Python
+alias python=python3
+
