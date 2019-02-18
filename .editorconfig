@@ -27,8 +27,10 @@ trim_trailing_whitespace = false
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-[.travis.yml]
+[*.yml]
+
+# For .travis.yml, docker-compose.yml
 
 indent_size = 2
-indent_style = tab
+indent_style = space
 

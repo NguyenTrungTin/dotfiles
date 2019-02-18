@@ -1,0 +1,1 @@
+/home/tin/.nvm/versions/node/v10.15.0/lib/node_modules/mongo-hacker/mongo_hacker.js

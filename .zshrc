@@ -92,6 +92,9 @@ eval "$(thefuck --alias fuck)"
 # Yarn
 export PATH="$PATH:`yarn global bin`"
 
+# Deno
+ export PATH=$HOME/.deno/bin:$PATH
+
 # Go Lang
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
@@ -121,6 +124,10 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 # Python
 alias python=python3
 alias pip=pip3
+# PYENV  - Python Version Mananger
+export PATH="/home/tin/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Fix python error for YouCompleteMe
 export DYLD_FORCE_FLAT_NAMESPACE=1
