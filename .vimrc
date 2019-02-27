@@ -691,6 +691,9 @@ let g:prettier#config#tab_width = 4
 " Prettier default: false
 let g:prettier#config#use_tabs = 'true'
 
+" Fit code within this line limit
+let g:prettier#config#print_width = 120
+
 
 " ----------------------------------------------------------------------
 " | Helper Functions                                                   |
@@ -756,6 +759,21 @@ function! ToggleRelativeLineNumbers()
 
 endfunction
 
+
+" ----------------------------------------------------------------------
+" | Autoindent on paste                                                 |
+" ----------------------------------------------------------------------
+
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
 
 " ----------------------------------------------------------------------
 " | Automatic Commands                                                 |

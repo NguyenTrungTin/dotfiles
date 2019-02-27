@@ -112,6 +112,7 @@ alias emacs='emacs --no-window-system'
 # xclip
 alias xclip='xclip -selection -c'
 
+# Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # rbenv for Ruby
