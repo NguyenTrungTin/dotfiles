@@ -692,7 +692,7 @@ let g:prettier#config#tab_width = 4
 let g:prettier#config#use_tabs = 'true'
 
 " Fit code within this line limit
-let g:prettier#config#print_width = 120
+" let g:prettier#config#print_width = 120
 
 
 " ----------------------------------------------------------------------
