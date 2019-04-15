@@ -69,7 +69,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 > Awesome dotfiles:
 - [Mathias Bynens's dotfiles](https://github.com/mathiasbynens/dotfiles)
-- [alrra's dotfiles](https://github.com/mathiasbynens/dotfiles)
+- [alrra's dotfiles](https://github.com/alrra/dotfiles)
 - [gpakosz's tmux config](https://github.com/gpakosz/.tmux)
 
 > Awesome Books:
