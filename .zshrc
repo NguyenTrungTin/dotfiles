@@ -67,6 +67,8 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
+export MYVIMRC="$HOME/.vimrc"
+
 # Set Vim mode for terminal
 set -o vi
 
