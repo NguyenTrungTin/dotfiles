@@ -58,7 +58,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt-get update && sudo apt-get -y install --no-install-recommends yarn
 
 # Install global package
-npm install -g @vue/cli @adonisjs/cli electron-installer-debian eslint fkill-cli fx gtop instant-markdown-d jest jsdoc live-server mongo-hacker ndb ngrok nodemon now pm2 prettier sequelize-cli serve serverless swagger typescript
+npm install -g @vue/cli @adonisjs/cli electron-installer-debian eslint fkill-cli fx gtop instant-markdown-d jest jsdoc live-server mongo-hacker ndb ngrok nodemon now pm2 prettier sequelize-cli serve serverless typescript
 
 # Install vim
 sudo apt-get -y install vim-gtk
