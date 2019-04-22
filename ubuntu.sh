@@ -22,6 +22,11 @@ sudo apt install zsh
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# Install some plugin for zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/lukechilds/zsh-nvm ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm
+
 # Install fish
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-get update
@@ -32,6 +37,11 @@ chsh -s $(which zsh)
 
 # Install git-extras
 sudo apt-get install git-extras
+
+# Install the fuck
+sudo apt update
+sudo apt install python3-dev python3-pip python3-setuptools
+sudo pip3 install thefuck
 
 # Install net-tools, includes aditional utilisties such as arp, ifconfig, netstat, rarp, nameif and route
 sudo apt install net-tools
@@ -44,13 +54,12 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 nvm install --lts
 
 # Install Yarn
-sudo apt-get install --no-install-recommends yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install --no-install-recommends yarn
 
-# Install eslint
-sudo npm install -g eslint
-
-# Install Instant Markdown
-sudo npm -g install instant-markdown-d
+# Install global package
+sudo npm install -g @vue/cli @adonisjs/cli electron-installer-debian eslint fkill-cli fx gtop instant-markdown-d jest jsdoc live-server mongo-hacker ndb ngrok nodemon now pm2 prettier sequelize-cli serve serverless swagger typescript
 
 # Install vim
 sudo apt-get install vim-gtk

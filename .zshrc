@@ -125,8 +125,9 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 # Python
 alias python=python3
 alias pip=pip3
+
 # PYENV  - Python Version Mananger
-export PATH="/home/tin/.pyenv/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
