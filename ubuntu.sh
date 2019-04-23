@@ -45,6 +45,9 @@ sudo apt-get -y install git-extras
 sudo apt-get -y install python3-dev python3-pip python3-setuptools
 sudo pip3 install thefuck
 
+# Install pyenv
+curl https://pyenv.run | bash
+
 # Install net-tools, includes aditional utilisties such as arp, ifconfig, netstat, rarp, nameif and route
 sudo apt-get -y install net-tools
 
