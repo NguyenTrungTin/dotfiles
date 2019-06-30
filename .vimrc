@@ -38,7 +38,7 @@ set cpoptions+=$                    " When making a change, don't
                                     " the changed text.
 
 if has('syntax')
-    set colorcolumn=73              " Highlight certain column(s).
+    " set colorcolumn=73              " Highlight certain column(s).
     set cursorline                  " Highlight the current line.
 endif
 
@@ -206,11 +206,14 @@ endif
 	Plug 'ervandew/supertab'
     Plug 'airblade/vim-gitgutter'
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-	Plug 'Shougo/neocomplete.vim'
+	" Plug 'Shougo/neocomplete.vim'
     " Plug 'w0rp/ale' " Disable because of conflicting with YouCompleteMe
     " Plug 'sheerun/vim-polyglot' " Disable because of conficting with vim-go
 
-    " HTML/CSS
+	" Conquer of Completion
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+	" HTML/CSS
     Plug 'ap/vim-css-color'
     Plug 'othree/html5.vim'
 	Plug 'wavded/vim-stylus'
@@ -251,6 +254,7 @@ endif
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     " Python
+	Plug 'ambv/black'
 
     " Ruby
     Plug 'vim-ruby/vim-ruby'
@@ -262,6 +266,7 @@ endif
     Plug 'joshdick/onedark.vim'
 	Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'morhetz/gruvbox'
+	Plug 'sonph/onehalf'
     Plug 'mhartington/oceanic-next'
 	Plug 'kaicataldo/material.vim'
     Plug 'jdkanani/vim-material-theme'
@@ -269,6 +274,10 @@ endif
     Plug 'whatyouhide/vim-gotham'
 	Plug 'raphamorim/lucario'
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+	Plug 'chriskempson/base16-vim'
+	Plug 'h404bi/base16-snazzy-scheme'
+	Plug 'ajh17/Spacegray.vim'
+    Plug 'arcticicestudio/nord-vim'
     " Initialize plugin system
     call plug#end()
 
@@ -356,6 +365,15 @@ augroup go
   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 augroup END
+
+
+" ----------------------------------------------------------------------
+" | Plugins - Vim-black                                              |
+" ----------------------------------------------------------------------
+" https://github.com/ambv/black
+
+autocmd BufWritePre *.py execute ':Black'
+
 
 " ----------------------------------------------------------------------
 " | Plugins - Vim-Airline                                              |
@@ -718,6 +736,10 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 " | Plugins - vim-prettier
 " ----------------------------------------------------------------------
 
+" Autoformat
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
 " Number of spaces per indentation level
 " Prettier default: 2
 let g:prettier#config#tab_width = 4
@@ -905,7 +927,7 @@ if has("gui_running")
 endif
 
 " Colorscheme
-colorscheme gruvbox          " Use custom color scheme
+colorscheme nord          " Use custom color scheme
 
 " ----------------------------------------------------------------------
 " | Cursor                                                             |
