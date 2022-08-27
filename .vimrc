@@ -161,7 +161,10 @@ endif
 
     call plug#begin('~/.vim/plugged')     " Specify a directory for plugins
 
-    " Utility
+	" Github Copilot
+	Plug 'github/copilot.vim'
+
+	" Utility
     Plug 'scrooloose/nerdtree'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'vim-airline/vim-airline'
@@ -194,24 +197,21 @@ endif
 	Plug 'mileszs/ack.vim'
 
     " Generic Language Support
-    Plug 'Valloric/YouCompleteMe'
     Plug 'scrooloose/syntastic'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'mattn/webapi-vim'
     Plug 'mattn/emmet-vim'
 	Plug 'jiangmiao/auto-pairs'
     Plug 'nathanaelkane/vim-indent-guides'
-	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'ervandew/supertab'
     Plug 'airblade/vim-gitgutter'
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+    " Plug 'Valloric/YouCompleteMe'
 	" Plug 'Shougo/neocomplete.vim'
     " Plug 'w0rp/ale' " Disable because of conflicting with YouCompleteMe
     " Plug 'sheerun/vim-polyglot' " Disable because of conficting with vim-go
-
-	" Conquer of Completion
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" Plug 'SirVer/ultisnips'
 
 	" HTML/CSS
     Plug 'ap/vim-css-color'
@@ -254,13 +254,18 @@ endif
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     " Python
-	Plug 'ambv/black'
 
     " Ruby
     Plug 'vim-ruby/vim-ruby'
     Plug 'tpope/vim-rails'
 
-    " Themes
+	" Rust
+	Plug 'rust-lang/rust.vim'
+
+	" Yaml
+	Plug 'chase/vim-ansible-yaml'
+
+	" Themes
 	Plug 'ryanoasis/vim-devicons'
     Plug 'altercation/vim-colors-solarized'
     Plug 'joshdick/onedark.vim'
@@ -270,6 +275,7 @@ endif
     Plug 'mhartington/oceanic-next'
 	Plug 'kaicataldo/material.vim'
     Plug 'jdkanani/vim-material-theme'
+	Plug 'hzchirs/vim-material'
 	Plug 'kristijanhusak/vim-hybrid-material'
     Plug 'whatyouhide/vim-gotham'
 	Plug 'raphamorim/lucario'
@@ -288,40 +294,42 @@ endif
 
 " https://github.com/fatih/vim-go-tutorial
 
-" let g:go_fmt_fail_silently = 1
+let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "goimports"
-let g:go_fmt_options = {
-			\ 'goimports': '-local do/',
-			\ }
-
 let g:go_debug_windows = {
       \ 'vars':  'leftabove 35vnew',
       \ 'stack': 'botright 10new',
-	  \ }
-
+\ }
 
 let g:go_test_prepend_name = 1
 let g:go_list_type = "quickfix"
-let g:go_auto_type_info = 1
+let g:go_auto_type_info = 0
 let g:go_auto_sameids = 0
-let g:go_info_mode = "gocode"
 
-let g:go_def_mode = "godef"
+let g:go_null_module_warning = 0
 let g:go_echo_command_info = 1
+
 let g:go_autodetect_gopath = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_enabled = ['vet', 'golint']
 
-" let g:go_highlight_space_tab_error = 0
-" let g:go_highlight_array_whitespace_error = 0
-" let g:go_highlight_trailing_whitespace_error = 0
-" let g:go_highlight_extra_types = 0
-" let g:go_highlight_build_constraints = 1
-" let g:go_highlight_types = 0
-" let g:go_highlight_operators = 1
-" let g:go_highlight_format_strings = 0
-" let g:go_highlight_function_calls = 0
-" let g:go_gocode_propose_source = 1
+let g:go_info_mode = 'gopls'
+let g:go_rename_command='gopls'
+let g:go_gopls_complete_unimported = 1
+let g:go_implements_mode='gopls'
+let g:go_diagnostics_enabled = 1
+let g:go_doc_popup_window = 1
+
+let g:go_highlight_space_tab_error = 0
+let g:go_highlight_array_whitespace_error = 0
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_extra_types = 0
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_types = 0
+let g:go_highlight_operators = 1
+let g:go_highlight_format_strings = 0
+let g:go_highlight_function_calls = 0
+let g:go_gocode_propose_source = 1
 
 let g:go_modifytags_transform = 'camelcase'
 let g:go_fold_enable = []
@@ -329,8 +337,8 @@ let g:go_fold_enable = []
 nmap <C-g> :GoDecls<cr>
 imap <C-g> <esc>:<C-u>GoDecls<cr>
 
-" run :GoBuild or :GoTestCompile based on the go file
 
+" run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
   if l:file =~# '^\f\+_test\.go$'
@@ -340,24 +348,25 @@ function! s:build_go_files()
   endif
 endfunction
 
+
 augroup go
   autocmd!
 
-  autocmd FileType go nmap <silent> <leader>gv <Plug>(go-def-vertical)
-  autocmd FileType go nmap <silent> <leader>gs <Plug>(go-def-split)
-  autocmd FileType go nmap <silent> <leader>gd <Plug>(go-def-tab)
+  autocmd FileType go nmap <silent> <Leader>v <Plug>(go-def-vertical)
+  autocmd FileType go nmap <silent> <Leader>s <Plug>(go-def-split)
+  autocmd FileType go nmap <silent> <Leader>d <Plug>(go-def-tab)
 
-  autocmd FileType go nmap <silent> <leader>gx <Plug>(go-doc-vertical)
+  autocmd FileType go nmap <silent> <Leader>x <Plug>(go-doc-vertical)
 
-  autocmd FileType go nmap <silent> <leader>gi <Plug>(go-info)
-  autocmd FileType go nmap <silent> <leader>gl <Plug>(go-metalinter)
+  autocmd FileType go nmap <silent> <Leader>i <Plug>(go-info)
+  autocmd FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
 
-  autocmd FileType go nmap <silent> <leader>gb :<C-u>call <SID>build_go_files()<CR>
-  autocmd FileType go nmap <silent> <leader>gt  <Plug>(go-test)
-  autocmd FileType go nmap <silent> <leader>gr  <Plug>(go-run)
-  autocmd FileType go nmap <silent> <leader>ge  <Plug>(go-install)
+  autocmd FileType go nmap <silent> <leader>b :<C-u>call <SID>build_go_files()<CR>
+  autocmd FileType go nmap <silent> <leader>t  <Plug>(go-test)
+  autocmd FileType go nmap <silent> <leader>r  <Plug>(go-run)
+  autocmd FileType go nmap <silent> <leader>e  <Plug>(go-install)
 
-  autocmd FileType go nmap <silent> <leader>gc <Plug>(go-coverage-toggle)
+  autocmd FileType go nmap <silent> <Leader>c <Plug>(go-coverage-toggle)
 
   " I like these more!
   autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
@@ -724,13 +733,13 @@ let g:deoplete#enable_at_startup = 1
 
 " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
 " (via http://stackoverflow.com/a/22253548/1626737)
-let g:SuperTabDefaultCompletionType    = '<C-n>'
-let g:SuperTabCrMapping                = 0
-let g:UltiSnipsExpandTrigger           = '<tab>'
-let g:UltiSnipsJumpForwardTrigger      = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
-let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType    = '<C-n>'
+" let g:SuperTabCrMapping                = 0
+" let g:UltiSnipsExpandTrigger           = '<tab>'
+" let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+" let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+" let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 " ----------------------------------------------------------------------
 " | Plugins - vim-prettier
@@ -927,7 +936,7 @@ if has("gui_running")
 endif
 
 " Colorscheme
-colorscheme nord          " Use custom color scheme
+colorscheme gruvbox          " Use custom color scheme
 
 " ----------------------------------------------------------------------
 " | Cursor                                                             |

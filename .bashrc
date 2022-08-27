@@ -134,3 +134,9 @@ export GOPATH=$HOME/go
 alias python=python3
 alias pip=pip3
 
+if [ -f $(brew --prefix)/etc/bash_completion ]; then source $(brew --prefix)/etc/bash_completion; fi
+if [ -f $(brew --prefix)/etc/bash_completion ]; then source $(brew --prefix)/etc/bash_completion; fi
+
+source /Users/tin/Library/Preferences/org.dystroy.broot/launcher/bash/br
+
+complete -C /usr/local/bin/terraform terraform
